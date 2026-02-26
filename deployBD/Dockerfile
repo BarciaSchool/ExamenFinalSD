@@ -6,4 +6,4 @@ WORKDIR /app
 COPY battleship-server.jar /app/battleship-server.jar
 
 # Ejecutar el servidor con mejor configuración para producción
-CMD ["java", "-Xms256m", "-Xmx512m", "-jar", "battleship-server.jar"]
+CMD ["java", "-Xms256m", "-Xmx512m", "-jar", "battleship-server.jar", "--server"]
