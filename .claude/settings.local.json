@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(netstat:*)",
+      "Bash(taskkill:*)",
+      "Bash(mvn compile:*)",
+      "Bash(mvn:*)",
+      "Bash(java:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker port:*)",
+      "Bash(docker-compose down:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(findstr:*)",
+      "Bash(start \"Battleship Server\" cmd /c \"mvn exec:java -Dexec.mainClass=com.battleship.server.ServerMain && pause\")",
+      "Bash(start \"Battleship Client 1\" cmd /c \"mvn exec:java -Dexec.mainClass=com.mycompany.akenix.battleship.AKENIXBattleShip && pause\")",
+      "Bash(start \"Battleship Client 2\" cmd /c \"mvn exec:java -Dexec.mainClass=com.mycompany.akenix.battleship.AKENIXBattleShip && pause\")",
+      "Bash(start:*)",
+      "Bash(tasklist:*)",
+      "Bash(timeout:*)",
+      "Bash(ping:*)",
+      "Bash(copy:*)",
+      "Bash(cmd:*)",
+      "Bash(powershell:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
+    ]
+  }
+}

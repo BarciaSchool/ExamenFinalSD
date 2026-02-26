@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(cmd /c \"tree /F src\")"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+# Git
+.git
+.gitignore
+
+# Documentación
+README.md
+.env.example
+
+# Scripts
+deploy.sh
+
+# Archivos temporales
+*.tmp
+*.log
