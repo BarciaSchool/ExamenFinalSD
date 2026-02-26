@@ -48,13 +48,14 @@ cp java/target/dist/battleship-server.jar deployBD/
 
 **IMPORTANTE**: En Dokploy **NO se exponen puertos manualmente** en el docker-compose. Dokploy maneja esto automáticamente.
 
-- El servicio `server` expone el puerto **9090** automáticamente
+- El servicio `server` escucha internamente en el puerto **9090**
+- Dokploy detecta este puerto y lo expone automáticamente
 - La base de datos (`db`) es interna, no accesible desde fuera
-- Dokploy creará una configuración de nginx reverse proxy automáticamente
 
 **En la UI de Dokploy:**
-- Configura el dominio/IP donde se accederá al servidor
-- Dokploy detectará automáticamente el puerto 9090 del servicio `server`
+1. Configura el dominio/IP donde se accederá al servidor
+2. Dokploy detectará automáticamente el puerto 9090 del servicio `server`
+3. Los clientes se conectarán a: `tu-dominio.com:9090` (o IP:9090)
 
 ### 5. Variables de entorno (Opcional)
 
