@@ -5,8 +5,8 @@ import com.battleship.security.PasswordUtil;
 import javax.persistence.*;
 
 public class PlayerDAO {
-    // Asegúrate de que "battleshipPU" coincida con tu persistence.xml
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("battleshipPU");
+    // Usa PersistenceManager para leer variables de entorno
+    private static EntityManagerFactory emf = PersistenceManager.getEntityManagerFactory();
 
     /**
      * Login method - authenticates user without auto-registration

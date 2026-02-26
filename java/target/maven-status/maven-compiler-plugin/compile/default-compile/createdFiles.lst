@@ -27,6 +27,7 @@ com\battleship\client\ClientController.class
 com\battleship\server\ServerMain.class
 com\battleship\ui\lobby\LobbyGUI.class
 com\battleship\ui\components\ModernComponents$3.class
+com\battleship\persistence\PersistenceManager.class
 com\battleship\ui\components\ModernComponents.class
 com\battleship\ui\game\ShipPlacementGUI$3.class
 com\battleship\ui\game\GameGUI$SunkShip.class

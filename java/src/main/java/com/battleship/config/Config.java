@@ -60,7 +60,9 @@ public class Config {
      */
     public static String getServerHost() {
         load();
-        return properties.getProperty("server.host", DEFAULT_HOST);
+        String host = properties.getProperty("server.host", DEFAULT_HOST);
+        System.out.println("[Config] Conectando a servidor: " + host + ":" + getServerPort());
+        return host;
     }
 
     /**
