@@ -1,5 +1,7 @@
 package com.battleship.monitor;
 
+import com.battleship.config.Config;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -87,9 +89,9 @@ public class MonitorGUI extends JFrame implements MonitorClient.MonitorDataListe
     }
 
     private void connectToServer() {
-        // Conectar automáticamente a localhost:9090
-        String host = "localhost";
-        int port = 9090;
+        // Conectar usando configuración de config.properties
+        String host = Config.getServerHost();
+        int port = Config.getServerPort();
 
         boolean connected = client.connect(host, port);
 

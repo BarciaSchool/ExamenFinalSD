@@ -4,6 +4,7 @@
 
 package com.mycompany.akenix.battleship;
 
+import com.battleship.monitor.MonitorMain;
 import com.battleship.server.ServerMain;
 import com.battleship.ui.login.LoginGUI;
 
@@ -14,14 +15,24 @@ import com.battleship.ui.login.LoginGUI;
 public class AKENIXBattleShip {
 
     public static void main(String[] args) {
-        // Modo servidor (headless) si se pasa --server o -server como argumento
-        if (args.length > 0 && (args[0].equals("--server") || args[0].equals("-server"))) {
-            ServerMain.main(args);
-        } else {
-            // Modo cliente con GUI
-            java.awt.EventQueue.invokeLater(() -> {
-                new LoginGUI().setVisible(true);
-            });
+        if (args.length > 0) {
+            switch (args[0]) {
+                case "--server":
+                case "-server":
+                    // Modo servidor (headless)
+                    ServerMain.main(args);
+                    return;
+                case "--monitor":
+                case "-monitor":
+                    // Modo monitor de administración
+                    MonitorMain.main(args);
+                    return;
+            }
         }
+
+        // Modo cliente con GUI (default)
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginGUI().setVisible(true);
+        });
     }
 }
