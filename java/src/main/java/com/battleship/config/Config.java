@@ -7,6 +7,7 @@ import java.util.Properties;
 
 /**
  * Clase para leer la configuración de red desde config.properties
+ * Prioridad: archivo externo > classpath > valores por defecto
  */
 public class Config {
 
@@ -19,19 +20,39 @@ public class Config {
 
     /**
      * Carga el archivo config.properties si no ha sido cargado aún
+     * 1. Primero intenta leer archivo externo (permite sobrescribir config)
+     * 2. Si no existe, lee desde classpath (config empaquetada en JAR)
+     * 3. Si no existe, usa valores por defecto
      */
     private static void load() {
         if (loaded) return;
 
+        // Intentar leer archivo externo primero
         try (InputStream input = new FileInputStream("config.properties")) {
             properties.load(input);
             loaded = true;
-            System.out.println("[Config] Configuración cargada desde config.properties");
+            System.out.println("[Config] Configuración cargada desde archivo externo: config.properties");
+            return;
         } catch (IOException e) {
-            System.out.println("[Config] No se encontró config.properties, usando defaults");
-            System.out.println("[Config] host=" + DEFAULT_HOST + ", port=" + DEFAULT_PORT);
-            loaded = true;
+            // No hay archivo externo, intentar classpath
         }
+
+        // Intentar leer desde classpath (dentro del JAR)
+        try (InputStream input = Config.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input != null) {
+                properties.load(input);
+                loaded = true;
+                System.out.println("[Config] Configuración cargada desde classpath: config.properties");
+                return;
+            }
+        } catch (IOException e) {
+            // Error leyendo classpath
+        }
+
+        // Usar valores por defecto
+        System.out.println("[Config] No se encontró config.properties, usando defaults");
+        System.out.println("[Config] host=" + DEFAULT_HOST + ", port=" + DEFAULT_PORT);
+        loaded = true;
     }
 
     /**
