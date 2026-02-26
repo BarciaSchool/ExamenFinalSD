@@ -2,6 +2,7 @@ package com.battleship.ui.login;
 
 import com.battleship.client.ClientController;
 import com.battleship.common.Protocol;
+import com.battleship.config.Config;
 import com.battleship.validation.InputValidator;
 import com.formdev.flatlaf.FlatLightLaf;
 
@@ -236,7 +237,7 @@ public class RegisterGUI extends JFrame {
 
         ClientController controller = ClientController.getInstance();
         if (!controller.isConnected()) {
-            boolean connected = controller.connect("localhost", 9090);
+            boolean connected = controller.connect(Config.getServerHost(), Config.getServerPort());
             if (!connected) {
                 showError("No se pudo conectar al servidor");
                 return;

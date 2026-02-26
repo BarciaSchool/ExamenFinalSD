@@ -6,6 +6,7 @@ package com.battleship.ui.login;
 
 import com.battleship.client.ClientController;
 import com.battleship.common.Protocol;
+import com.battleship.config.Config;
 
 import javax.swing.JOptionPane;
 
@@ -126,9 +127,9 @@ public class Login extends javax.swing.JFrame {
         // 3. Obtener el controlador
         ClientController controller = ClientController.getInstance();
 
-        // 4. Intentar conectar (localhost y puerto 9090)
+        // 4. Intentar conectar usando configuración de config.properties
         // Si ya está conectado, el método connect suele manejarlo o puedes verificar isConnected()
-        boolean conectado = controller.connect("localhost", 9090);
+        boolean conectado = controller.connect(Config.getServerHost(), Config.getServerPort());
 
         if (conectado) {
             // Referencia a esta ventana para que el controlador pueda mostrar alertas o cerrarla
