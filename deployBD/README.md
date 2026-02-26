@@ -46,11 +46,15 @@ cp java/target/dist/battleship-server.jar deployBD/
 
 ### 4. Configurar redes en Dokploy
 
-En Dokploy, asegúrate de exponer los puertos:
+**IMPORTANTE**: En Dokploy **NO se exponen puertos manualmente** en el docker-compose. Dokploy maneja esto automáticamente.
 
-- **9090** - Puerto del servidor de juego (para clientes externos)
+- El servicio `server` expone el puerto **9090** automáticamente
+- La base de datos (`db`) es interna, no accesible desde fuera
+- Dokploy creará una configuración de nginx reverse proxy automáticamente
 
-El puerto 5432 de la BD solo es interno, no necesita exponerse.
+**En la UI de Dokploy:**
+- Configura el dominio/IP donde se accederá al servidor
+- Dokploy detectará automáticamente el puerto 9090 del servicio `server`
 
 ### 5. Variables de entorno (Opcional)
 
